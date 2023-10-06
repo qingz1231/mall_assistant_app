@@ -1,0 +1,1 @@
+const logo = "assets/images/shopdesk-logo.png";
