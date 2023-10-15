@@ -11,6 +11,7 @@ class TitleDesc extends StatelessWidget {
                 width: screenWidth,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center, // Center vertically
                   children: [
                      Text(
                       title,
