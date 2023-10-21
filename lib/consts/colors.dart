@@ -9,5 +9,6 @@ const Color txt1 = Color.fromRGBO(43, 43, 43, 1);
 const Color txt2 = Color.fromRGBO(112, 123, 129, 1);
 const Color txt3 = Color.fromRGBO(255, 255, 255, 1);
 const Color border1 = Color.fromRGBO(136, 145, 165, 1);
+const Color btn1 = Color.fromRGBO(217,217,217,1);
 
 

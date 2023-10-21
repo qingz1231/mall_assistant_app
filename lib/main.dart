@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return MaterialApp(
-      home: Profile(),
+      home: ShopDetail(),
       routes: {
         '/home': (context) => Home(),
         '/directory': (context) => Directory(),

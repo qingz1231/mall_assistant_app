@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mall_assistant_app/consts/consts.dart';
-import 'package:mall_assistant_app/utils/profileRows.dart';
+import 'package:mall_assistant_app/utils/customRows.dart';
 import '../utils/bottonNav.dart';
 import '../utils/horizontalGridScroll.dart';
 import '../utils/label_input.dart';
