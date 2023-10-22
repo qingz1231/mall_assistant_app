@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mall_assistant_app/utils/topBar.dart';
-import '../utils/bottonNav.dart';
+import 'package:mall_assistant_app/utils/navs_bars/top_bar.dart';
+import '../utils/navs_bars/bottonNav.dart';
 
 class Directory extends StatelessWidget {
   const Directory({super.key});

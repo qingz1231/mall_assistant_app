@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:mall_assistant_app/consts/consts.dart';
 import 'package:mall_assistant_app/utils/customButton.dart';
 import 'package:mall_assistant_app/utils/read_more.dart';
-import '../utils/bottonNav.dart';
+import '../utils/navs_bars/bottonNav.dart';
 import '../utils/horizontalGridScroll.dart';
 import '../utils/label_input.dart';
-import '../utils/titleDesc.dart';
+import '../utils/title_desc.dart';
 
 class ShopDetail extends StatelessWidget {
   const ShopDetail({super.key});
@@ -20,8 +20,8 @@ class ShopDetail extends StatelessWidget {
 
       child: Scaffold(
           body: SingleChildScrollView(
-            child: Column(
-                  children: [
+        child: Column(
+          children: [
             Stack(
               children: [
                 Container(
@@ -87,7 +87,8 @@ class ShopDetail extends StatelessWidget {
                   Text(
                     detail,
                     textAlign: TextAlign.left,
-                    style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+                    style:
+                        TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
                   ),
                   Container(
                       child: ReadMore(
@@ -99,24 +100,22 @@ class ShopDetail extends StatelessWidget {
               ),
             ),
             Container(
-              
               child: Wrap(
-                spacing: 16.0, // Horizontal spacing between buttons
-                runSpacing: 16.0, // Vertical spacing between rows of buttons
-                children: [
-                  CustomRegularButton("test", bg_secondary, () => null),
-                  CustomRegularButton("test", bg_secondary, () => null),
-                  CustomRegularButton("test", bg_secondary, () => null),
-                  CustomRegularButton("test", bg_secondary, () => null),
-                  CustomRegularButton("test", bg_secondary, () => null),
-                  CustomRegularButton("test", bg_secondary, () => null),
-                  CustomRegularButton("test", bg_secondary, () => null),
-                ]
-              ),
+                  spacing: 16.0, // Horizontal spacing between buttons
+                  runSpacing: 16.0, // Vertical spacing between rows of buttons
+                  children: [
+                    CustomRegularButton("test", bg_secondary, () => null),
+                    CustomRegularButton("test", bg_secondary, () => null),
+                    CustomRegularButton("test", bg_secondary, () => null),
+                    CustomRegularButton("test", bg_secondary, () => null),
+                    CustomRegularButton("test", bg_secondary, () => null),
+                    CustomRegularButton("test", bg_secondary, () => null),
+                    CustomRegularButton("test", bg_secondary, () => null),
+                  ]),
             )
-                  ],
-                ),
-          )),
+          ],
+        ),
+      )),
     );
   }
 

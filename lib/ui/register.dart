@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mall_assistant_app/consts/consts.dart';
-import '../utils/bottonNav.dart';
+import '../utils/navs_bars/bottonNav.dart';
 import '../utils/horizontalGridScroll.dart';
 import '../utils/label_input.dart';
-import '../utils/titleDesc.dart';
+import '../utils/title_desc.dart';
 
 class Register extends StatelessWidget {
   const Register({super.key});

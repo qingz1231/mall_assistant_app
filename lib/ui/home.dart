@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../utils/bottonNav.dart';
+import '../utils/navs_bars/bottonNav.dart';
 import '../utils/horizontalGridScroll.dart';
-import '../utils/titleDesc.dart';
+import '../utils/title_desc.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});

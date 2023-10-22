@@ -7,12 +7,12 @@ Widget CustomRegularButton(String label, Color color, Function() action) {
       action();
     },
     style: TextButton.styleFrom(
-        padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
+        padding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
         foregroundColor: txt3,
         backgroundColor: color,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),
-        textStyle: TextStyle(fontSize: txt_medium)),
+        textStyle: TextStyle(fontSize: txt_small,fontWeight: FontWeight.w500)),
     child: Text(label),
   );
 }

@@ -21,7 +21,13 @@ const String hungryMsg = "Recommendations just For You!";
 const String eventMsg = "Join in the Fun";
 const String name = "Name";
 const String nameHint="John Doe";
+const String termsCondition="Terms & Conditions";
+const String shop = "Shop";
 
+
+//titles
+const String myVoucher = "My Voucher";
+const String myBookmark = "My Bookmark";
 
 //login screen
 const String login = "Login";
