@@ -3,6 +3,7 @@ import 'package:mall_assistant_app/ui/directory.dart';
 import 'package:mall_assistant_app/ui/events.dart';
 import 'package:mall_assistant_app/ui/home.dart';
 import 'package:mall_assistant_app/ui/login.dart';
+import 'package:mall_assistant_app/ui/mall_voucher.dart';
 import 'package:mall_assistant_app/ui/my_bookmark.dart';
 import 'package:mall_assistant_app/ui/my_voucher.dart';
 import 'package:mall_assistant_app/ui/profile.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return MaterialApp(
-      home: Events(),
+      home: Home(),
       routes: {
         '/home': (context) => Home(),
         '/directory': (context) => Directory(),
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         '/register': (context) => Register(),
         '/profile': (context) => Profile(),
         '/events': (context) => Events(),
+        '/vouchers': (context) => MallVoucher(),
 
         '/shopDetail': (context) => ShopDetail(),
         '/myVoucher': (context) => MyVoucher(),

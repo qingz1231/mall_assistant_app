@@ -27,8 +27,6 @@ class MallVoucher extends StatelessWidget {
           ),
         ),
         appBar: TitleAppBar(myVoucher, context),
-
-   
         bottomNavigationBar: BottomNav()
       );
   }
