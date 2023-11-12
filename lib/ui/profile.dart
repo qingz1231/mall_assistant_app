@@ -15,9 +15,7 @@ class Profile extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
-    return SafeArea(
-      child: Scaffold(
-        body: Center(
+    return Center(
             child: Column(
           children: [
             Container(
@@ -93,8 +91,7 @@ class Profile extends StatelessWidget {
               ),
             ),
           ],
-        )),
-      ),
-    );
+        )
+        );
   }
 }

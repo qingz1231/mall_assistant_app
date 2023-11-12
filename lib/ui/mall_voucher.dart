@@ -13,9 +13,7 @@ class MallVoucher extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    return Scaffold(
-  
-        body: SingleChildScrollView(
+    return SingleChildScrollView(
           child: Column(
             children: [
               VoucherContainer(title: "name", description: "shop",expiry: "expirity date",),
@@ -25,9 +23,6 @@ class MallVoucher extends StatelessWidget {
               VoucherContainer(title: "name", description: "shop",expiry: "expirity date",),
             ],
           ),
-        ),
-        appBar: TitleAppBar(myVoucher, context),
-        bottomNavigationBar: BottomNav()
-      );
+        );
   }
 }

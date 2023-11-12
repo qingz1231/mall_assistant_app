@@ -9,9 +9,7 @@ class Events extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    return Scaffold(
-  
-        body: CustomScrollView(
+    return  CustomScrollView(
           slivers: [
             TopBar(),
 
@@ -59,10 +57,6 @@ class Events extends StatelessWidget {
               ]),
             )
           ],
-        ),
-
-   
-        bottomNavigationBar: BottomNav()
-      );
+        );
   }
 }

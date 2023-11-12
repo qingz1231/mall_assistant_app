@@ -16,8 +16,7 @@ class Login extends StatelessWidget {
     TextEditingController ontroller = TextEditingController();
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    return Scaffold(
-      body: SingleChildScrollView(
+    return SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Center(
@@ -59,7 +58,6 @@ class Login extends StatelessWidget {
             ),
           ])),
         ),
-      ),
-    );
+      );
   }
 }

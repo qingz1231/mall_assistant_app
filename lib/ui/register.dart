@@ -15,8 +15,7 @@ class Register extends StatelessWidget {
     TextEditingController nameController = TextEditingController();
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    return Scaffold(
-      body: SingleChildScrollView(
+    return SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Center(
@@ -52,7 +51,6 @@ class Register extends StatelessWidget {
             ),
           ])),
         ),
-      ),
-    );
+      );
   }
 }

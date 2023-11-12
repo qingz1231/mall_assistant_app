@@ -10,9 +10,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    return Scaffold(
-  
-        body: CustomScrollView(
+    return CustomScrollView(
           slivers: [
             SliverAppBar(),
 
@@ -58,10 +56,7 @@ class Home extends StatelessWidget {
               ]),
             )
           ],
-        ),
+        );
 
-   
-        bottomNavigationBar: BottomNav()
-      );
   }
 }
