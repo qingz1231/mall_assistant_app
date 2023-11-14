@@ -43,9 +43,9 @@ class Events extends StatelessWidget {
                       ),
                       Column(
                         children: [
-                          ListRow(title: "title", description: "locaction"),
-                          ListRow(title: "title", description: "locaction"),
-                          ListRow(title: "title", description: "locaction"),
+                          // ListRow(title: "title", description: "locaction"),
+                          // ListRow(title: "title", description: "locaction"),
+                          // ListRow(title: "title", description: "locaction"),
                     
                         ],
                       )

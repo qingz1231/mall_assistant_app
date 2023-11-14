@@ -10,6 +10,7 @@ class TopBar extends StatelessWidget {
               pinned: true,
               snap: false,
               centerTitle: false,
+              automaticallyImplyLeading: false,
               title: GestureDetector(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,11 +26,12 @@ class TopBar extends StatelessWidget {
                 IconButton(
                   icon: Icon(Icons.person),
                   onPressed: () {
-                    print('Profile button pressed');
+                    Navigator.pushNamed(context, '/profile');
                   },
                 ),
               ],
               bottom: AppBar(
+                automaticallyImplyLeading: false,
                 title: Container(
                   width: double.infinity,
                   height: 40,

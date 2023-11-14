@@ -47,68 +47,70 @@ class _DirectoryState extends State<Directory> {
     }
   }
 
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    print("Hello there");
-    return CustomScrollView(
-      slivers: [
-        TopBar(),
-
-        // content starts here
-        SliverList(
-          delegate: SliverChildListDelegate([
-            SingleChildScrollView(
-              child: Column(
-                children: [
-                  Container(
-                    width: screenWidth,
-                    child: Text(
-                      "Total Shops",
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w600,
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          TopBar(),
+    
+          // content starts here
+          SliverList(
+            delegate: SliverChildListDelegate([
+              SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(
+                      width: screenWidth,
+                      child: Text(
+                        "Total Shops",
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
-                  ),
-
-
-                  Column(
-                     children: [
-                  for(int i = 0;i < _shops.length;i++)
-                    ListRow(title: _shops[i].shopName!, description: _shops[i].shopLocation!)
-                  
-                  ]
-                  ),
-
-                  //  
-
-                  // Column(
-                  //   children: [
-                  //     if (_shops.isNotEmpty)
-                  //       ListRow(
-                  //         title: _shops[0].shopName!,
-                  //         description: _shops[0].shopLocation!,
-                  //       )
-                  //     else
-                  //       Text(
-                  //           'No shops available'), // Provide a message when the list is empty
-                  //   ],
-                  // ),
-
-                  // Column(
-                  //   children: [
-                  //     ListRow(title: "title", description: "location"),
-                  //     ListRow(title: "title", description: "location"),
-                  //     ListRow(title: "title", description: "location"),
-                  //   ],
-                  // ),
-                ],
+    
+    
+                    Column(
+                       children: [
+                    for(int i = 0;i < _shops.length;i++)
+                      ListRow(title: _shops[i].shopName!, description: _shops[i].shopLocation!,id: _shops[i].id!)
+                    
+                    ]
+                    ),
+    
+                    //  
+    
+                    // Column(
+                    //   children: [
+                    //     if (_shops.isNotEmpty)
+                    //       ListRow(
+                    //         title: _shops[0].shopName!,
+                    //         description: _shops[0].shopLocation!,
+                    //       )
+                    //     else
+                    //       Text(
+                    //           'No shops available'), // Provide a message when the list is empty
+                    //   ],
+                    // ),
+    
+                    // Column(
+                    //   children: [
+                    //     ListRow(title: "title", description: "location"),
+                    //     ListRow(title: "title", description: "location"),
+                    //     ListRow(title: "title", description: "location"),
+                    //   ],
+                    // ),
+                  ],
+                ),
               ),
-            ),
-          ]),
-        )
-      ],
+            ]),
+          )
+        ],
+      ),
     );
   }
 }

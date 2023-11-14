@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mall_assistant_app/consts/consts.dart';
+import 'package:mall_assistant_app/service/customer_service.dart';
 import '../utils/navs_bars/bottonNav.dart';
 import '../utils/horizontalGridScroll.dart';
 import '../utils/label_input.dart';
@@ -42,6 +43,9 @@ class Login extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   // Handle login logic here
+                  var _username   = emailController.text.trim();
+                  var _password   = passwordController.text.trim();
+                  CustomerService.login(_username, _password);
                 },
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
@@ -56,6 +60,20 @@ class Login extends StatelessWidget {
                 child: Text(login),
               ),
             ),
+
+            SizedBox(height:10),
+
+            Container(
+     
+              child: Row(
+                
+                
+                children: [
+                  Text("Don't have an account yet?",style: TextStyle(fontSize: txt_medium)),
+                  GestureDetector(onTap:(){Navigator.pushNamed(context, '/register');} ,child: Text("Register",style: TextStyle(fontSize: txt_medium,color: bg_primary),)),
+                ],
+              ),
+            )
           ])),
         ),
       );

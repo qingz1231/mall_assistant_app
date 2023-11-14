@@ -23,6 +23,7 @@ const String name = "Name";
 const String nameHint="John Doe";
 const String termsCondition="Terms & Conditions";
 const String shop = "Shop";
+const String logout = "Logout";
 
 
 //titles

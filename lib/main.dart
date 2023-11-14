@@ -32,19 +32,18 @@ class _MyAppState extends State<MyApp> {
     double screenWidth = MediaQuery.of(context).size.width;
     return MaterialApp(
       home: Scaffold(
-        body: Home(),
+        body: Login(),
         bottomNavigationBar: BottomNav(),
     
       ),
       routes: {
+        '/login': (context) => Login(),
         '/home': (context) => Home(),
         '/directory': (context) => Directory(),
-        '/login': (context) => Login(),
         '/register': (context) => Register(),
         '/profile': (context) => Profile(),
         '/events': (context) => Events(),
         '/vouchers': (context) => MallVoucher(),
-        '/shopDetail': (context) => ShopDetail(),
         '/myVoucher': (context) => MyVoucher(),
         '/voucherDetail': (context) => VoucherDetail(),
         '/myBookmark': (context) => MyBookmark(),
