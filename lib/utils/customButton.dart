@@ -4,6 +4,7 @@ import 'package:mall_assistant_app/consts/consts.dart';
 Widget CustomRegularButton(String label, Color color, Function() action) {
   return TextButton(
     onPressed: () {
+      print('yes');
       action();
     },
     style: TextButton.styleFrom(

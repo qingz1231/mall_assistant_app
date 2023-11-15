@@ -45,7 +45,6 @@ class _MyAppState extends State<MyApp> {
         '/events': (context) => Events(),
         '/vouchers': (context) => MallVoucher(),
         '/myVoucher': (context) => MyVoucher(),
-        '/voucherDetail': (context) => VoucherDetail(),
         '/myBookmark': (context) => MyBookmark(),
       },
     );

@@ -34,7 +34,7 @@ static List<Customer> parseResponse(String responseBody) {
 
 
 
-  static Future<void> login(String username, String password) async {
+  static Future<bool> login(String username, String password) async {
     try {
       var map = Map<String,dynamic>();
       
@@ -50,11 +50,14 @@ static List<Customer> parseResponse(String responseBody) {
         if(customers.isNotEmpty){
           Customer customer = customers[0];
           await RememberUserPrefs.saveRememberUser(customer);
+          
           Fluttertoast.showToast(msg:"Login successfully");
+          return true;
         }
 
         else{
           Fluttertoast.showToast(msg:"Invalid credential");
+          return false;
         }
 
         
@@ -64,10 +67,12 @@ static List<Customer> parseResponse(String responseBody) {
 
       }else{
         Fluttertoast.showToast(msg:"Error 404");
+        return false;
    
       }
     }catch(e){
       Fluttertoast.showToast(msg:"Error appeared");
+      return false;
    
     }
   }

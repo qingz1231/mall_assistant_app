@@ -54,6 +54,7 @@ class _MyBookmarkState extends State<MyBookmark> {
                       title: snapshot.data![i].shop!.shopName!,
                       description: snapshot.data![i].shop!.shopLocation!,
                       clicked: snapshot.data![i].isSaved!,
+                      id:snapshot.data![i].shop!.id!,
                       onTapFunction: (bool saved) async {
                         Customer customer =
                             await RememberUserPrefs.loadCurrentUser();
