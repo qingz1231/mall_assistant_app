@@ -10,12 +10,12 @@ import '../entity/UserShop.dart';
 class ShopService {
   static Future<List<Shop>> getShops(String i) async {
     try {
-      print("Hello");
-      var map = Map<String, dynamic>();
 
+      var map = Map<String, dynamic>();
+      
       map['mall_id'] = i;
       final response = await http.post(Uri.parse(API.getShops), body: map);
-      print("finish posting");
+
 
       if (200 == response.statusCode) {
         List<Shop> list = parseResponse(response.body);
@@ -35,15 +35,15 @@ class ShopService {
     try {
       final parsed = json.decode(responseBody);
 
-      // Check if the 'data' key exists and is a list
+
       if (parsed['data'] is List) {
-        // Extract the list of shops
+
         List<Shop> list = (parsed['data'] as List)
             .map<Shop>((json) => Shop.fromJson(json))
             .toList();
         return list;
       } else {
-        // Handle the case where 'data' is not a list
+
         print("Invalid data format: 'data' is not a list.");
         return [];
       }

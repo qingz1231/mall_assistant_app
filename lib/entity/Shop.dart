@@ -12,10 +12,10 @@ class Shop{
     return Shop(
       id: json['shop_id'] as String,
       shopName: json['shop_name'] as String,
-      shopLocation: json['shop_name'] as String,
-      shopDesc: json['shop_name'] as String,
-      imageUrl: json['shop_name'] as String,
-      tags: json['shop_name'] as String,
+      shopLocation: json['shop_location'] as String,
+      shopDesc: json['shop_desc'] as String,
+      imageUrl: json['image_url'] as String,
+      tags: json['tags'] as String,
 
     );
   }

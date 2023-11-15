@@ -1,5 +1,7 @@
 
 
+import 'package:keyboard_dismisser/keyboard_dismisser.dart';
+
 class API {
   static const hostConnect = "http://192.168.0.179/api_mall_app";
   static const hostConnectShop = "$hostConnect/api_mall_app/shop";
@@ -14,4 +16,6 @@ class API {
 
   static const checkBookmark = "http://192.168.0.179/api_mall_app/bookmark/isExist.php";
   static const saveBookmark = "http://192.168.0.179/api_mall_app/bookmark/save.php";
+  static const removeBookmark = "http://192.168.0.179/api_mall_app/bookmark/remove.php";
+  static const getAllBookmark = "http://192.168.0.179/api_mall_app/bookmark/getAll.php";
 }

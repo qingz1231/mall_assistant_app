@@ -17,24 +17,25 @@ Widget CustomRegularButton(String label, Color color, Function() action) {
   );
 }
 
-InkWell CustomCircularButton(double height,IconData icon, Function() action) {
-  return InkWell(
-    onTap: () {
-      action();
-    },
-    child: Container(
-      height: height,
-      width: height,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: btn1, // Set the background color of the circle
-      ),
-      child: Center(
-        child: Icon(
-          icon,
-          color: txt1, // Set the color of the icon
-        ),
-      ),
-    ),
-  );
-}
+// InkWell CustomCircularButton(double height,IconData icon, Function() action) {
+//   Color color = ;
+//   return InkWell(
+//     onTap: () {
+//       action();
+//     },
+//     child: Container(
+//       height: height,
+//       width: height,
+//       decoration: BoxDecoration(
+//         shape: BoxShape.circle,
+//         color: btn1, // Set the background color of the circle
+//       ),
+//       child: Center(
+//         child: Icon(
+//           icon,
+//           color: txt1, // Set the color of the icon
+//         ),
+//       ),
+//     ),
+//   );
+//}

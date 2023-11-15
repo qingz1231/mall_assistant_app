@@ -1,8 +1,8 @@
 class Bookmark {
-  int? bookmarkId;
-  int? itemId;
-  int? customerId;
-  int? category;
+  String? bookmarkId;
+  String? itemId;
+  String? customerId;
+  String? category;
   DateTime? timestamp;
 
   // Constructor
@@ -17,9 +17,9 @@ class Bookmark {
   // Factory method to create a Bookmark instance from JSON
   factory Bookmark.fromJson(Map<String, dynamic> json) {
     return Bookmark(
-      bookmarkId: json['bookmarkId'],
-      itemId: json['itemId'],
-      customerId: json['customerId'],
+      bookmarkId: json['bookmark_id'],
+      itemId: json['item_id'],
+      customerId: json['customer_id'],
       category: json['category'],
       timestamp: json['timestamp'] != null
           ? DateTime.parse(json['timestamp'])
