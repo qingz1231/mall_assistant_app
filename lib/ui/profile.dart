@@ -10,6 +10,7 @@ import '../utils/label_input.dart';
 import '../utils/profile_pic.dart';
 import '../utils/title_desc.dart';
 import 'my_bookmark.dart';
+import 'my_voucher.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
@@ -60,9 +61,19 @@ class Profile extends StatelessWidget {
                         screenWidth,
                         (screenHeight - screenHeight / 4.5) / 8),
                     CustomRow(
-                        TitleDesc(
-                            title: "My Voucher",
-                            description: "Manage your account vouchers"),
+                        GestureDetector(
+
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MyVoucher(),
+                            ),
+                          ),
+
+                          child: TitleDesc(
+                              title: "My Voucher",
+                              description: "Manage your account vouchers"),
+                        ),
                         screenWidth,
                         (screenHeight - screenHeight / 4.5) / 8),
                     CustomRow(

@@ -22,7 +22,8 @@ class API {
   static const checkSaved = "http://192.168.0.179/api_mall_app/voucher/isClaimed.php";
   static const saveVoucher = "http://192.168.0.179/api_mall_app/voucher/save.php";
   static const removeVoucher = "http://192.168.0.179/api_mall_app/voucher/remove.php";
-  static const getAllClaimed= "http://192.168.0.179/api_mall_app/voucher/getAllClaimed.php";
+  static const getAllClaimed= "http://192.168.0.179/api_mall_app/voucher/getAllSaved.php";
   static const getAllVoucher= "http://192.168.0.179/api_mall_app/voucher/getAll.php";
   static const getVoucherById= "http://192.168.0.179/api_mall_app/voucher/getVoucherById.php";
+  static const getVouchersById= "http://192.168.0.179/api_mall_app/voucher/getVouchersById.php";
 }

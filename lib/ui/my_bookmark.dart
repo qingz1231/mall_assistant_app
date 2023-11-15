@@ -36,7 +36,7 @@ class _MyBookmarkState extends State<MyBookmark> {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      body: FutureBuilder<List<UserShop>>(
+      body: FutureBuilder(
         future: bookmarks,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {

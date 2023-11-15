@@ -21,8 +21,8 @@ class ClaimedVoucher {
       voucherId: json['voucher_id'],
       customerId: json['customer_id'],
       timestamp: DateTime.parse(json['timestamp']),
-      claimed: json['claimed'],
-      alert: json['alert'],
+      claimed: json['claimed'] == 'true'?true:false,
+      alert: json['alert'] == 'true'?true:false,
     );
   }
 

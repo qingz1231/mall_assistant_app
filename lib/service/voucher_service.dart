@@ -67,11 +67,9 @@ class VoucherService {
       final response = await http.post(Uri.parse(API.getVoucherById), body: map);
 
       if (200 == response.statusCode) {
-        
+  
         Voucher voucher = parseResponse(response.body)[0];
-
-        
-          // You may want to return a default UserVoucher or throw an exception
+    
           return voucher;
         }
 
