@@ -43,7 +43,7 @@ class Register extends StatelessWidget {
                     var _name = nameController.text.trim();
                     var _username = emailController.text.trim();
                     var _password = passwordController.text.trim();
-                    print("testing");
+             
     
                     CustomerService.register(_name, _username, _password);
     

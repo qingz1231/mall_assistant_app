@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mall_assistant_app/consts/consts.dart';
 import 'package:mall_assistant_app/service/voucher_service.dart';
 import 'package:mall_assistant_app/utils/navs_bars/title_appBar.dart';
+import 'package:mall_assistant_app/utils/navs_bars/top_bar.dart';
 import 'package:mall_assistant_app/utils/voucher_container.dart';
 
 import '../utils/navs_bars/bottonNav.dart';
@@ -15,23 +16,31 @@ class MallVoucher extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return FutureBuilder(
-      future: VoucherService.getVouchers('1') ,
+      future: VoucherService.getVouchers('1'),
       builder: (context, snapshot) => Scaffold(
+        bottomNavigationBar: BottomNav(),
         body: SafeArea(
-          child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    for(int i = 0;i < snapshot.data!.length;i++)
-                     VoucherContainer(
-                      title: snapshot.data![i].voucherName!, 
-                     description: snapshot.data![i].voucherDesc!,
-                     expiry: snapshot.data![i].dateEnd!.toString(),
-                     id:snapshot.data![i].voucherId!
-                     ),
-                
-                  ],
-                ),
+          child: CustomScrollView(
+            slivers: [
+              TopBar(),
+              SliverList(
+                delegate: SliverChildListDelegate([
+                  SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        for (int i = 0; i < snapshot.data!.length; i++)
+                          VoucherContainer(
+                              title: snapshot.data![i].voucherName!,
+                              description: snapshot.data![i].voucherDesc!,
+                              expiry: snapshot.data![i].dateEnd!.toString(),
+                              id: snapshot.data![i].voucherId!),
+                      ],
+                    ),
+                  ),
+                ]),
               ),
+            ],
+          ),
         ),
       ),
     );

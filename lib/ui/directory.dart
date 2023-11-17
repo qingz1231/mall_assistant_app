@@ -52,6 +52,7 @@ class _DirectoryState extends State<Directory> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      bottomNavigationBar: BottomNav(),
       body: CustomScrollView(
         slivers: [
           TopBar(),

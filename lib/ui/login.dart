@@ -47,7 +47,7 @@ class Login extends StatelessWidget {
                     var _username   = emailController.text.trim();
                     var _password   = passwordController.text.trim();
                     if(await CustomerService.login(_username, _password)){
-                      Navigator.pushNamed(context, '/directory');
+                      Navigator.pushNamed(context, '/home');
                     }
                   },
                   style: ElevatedButton.styleFrom(

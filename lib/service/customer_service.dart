@@ -84,8 +84,9 @@ static List<Customer> parseResponse(String responseBody) {
       map['name'] = name;
       map['username'] = username;
       map['password'] = password;
+      print("here");
       final response = await http.post(Uri.parse(API.register),body:map);
-
+      print("lol");
       if(200 == response.statusCode){
           print("success");
           return;
@@ -94,7 +95,7 @@ static List<Customer> parseResponse(String responseBody) {
 
       }
     }catch(e){
-      print("Error Appeared");
+      print(e);
 
     }
   }

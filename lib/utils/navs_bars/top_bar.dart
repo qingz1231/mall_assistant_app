@@ -5,6 +5,7 @@ class TopBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController searchController = TextEditingController();
     return SliverAppBar(
               floating: true,
               pinned: true,
@@ -31,22 +32,28 @@ class TopBar extends StatelessWidget {
                 ),
               ],
               bottom: AppBar(
-                automaticallyImplyLeading: false,
-                title: Container(
-                  width: double.infinity,
-                  height: 40,
-                  color: Colors.white,
-                  child: const Center(
-                    child: TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Search for shops or restaurants',
-                        prefixIcon: Icon(Icons.search),
-                        //suffixIcon: Icon(Icons.camera_alt)),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+  automaticallyImplyLeading: false,
+  title: Container(
+    width: double.infinity,
+    height: 40,
+    color: Colors.white,
+    child: Center(
+      child: TextField(
+        controller: searchController,
+        decoration: InputDecoration(
+          hintText: 'Search for shops or restaurants',
+          prefixIcon: GestureDetector(
+            onTap: () {
+              
+            },
+            child: const Icon(Icons.search), // Remove 'const' from GestureDetector
+          ),
+        ),
+      ),
+    ),
+  ),
+),
+
             );
   }
 }

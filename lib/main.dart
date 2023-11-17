@@ -31,11 +31,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return MaterialApp(
-      home: Scaffold(
-        body: Login(),
-        bottomNavigationBar: BottomNav(),
-    
-      ),
+      home: Login(),
       routes: {
         '/login': (context) => Login(),
         '/home': (context) => Home(),
