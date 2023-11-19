@@ -11,6 +11,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    double heightBetween = 10;
     return Scaffold(
       bottomNavigationBar: BottomNav(),
       body: CustomScrollView(
@@ -21,39 +22,46 @@ class Home extends StatelessWidget {
               SliverList(
                 delegate: SliverChildListDelegate([
                   SingleChildScrollView(
-                    child: Column(
-                      children: [
-    
-                        //advertisement section
-                        Container(
-                          width: screenWidth,
-                          height: 400,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                        
+                          //advertisement section
+                          Container(
+                            width: screenWidth,
+                            height: 400,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                            ),
+                            child: Image.network(
+                              'https://mall-assistant-system.s3.amazonaws.com/mcd-ad1.jpg', // Replace with the path to your image asset
+                              fit: BoxFit.cover, // Adjust the fit as needed
+                            ),
                           ),
-                          child: Image.network(
-                            'https://mall-assistant-system.s3.amazonaws.com/mcd-ad1.jpg', // Replace with the path to your image asset
-                            fit: BoxFit.cover, // Adjust the fit as needed
-                          ),
-                        ),
-    
-                        TitleDesc(
-                            title: "Promotion", description: "Limited Time only"),
-    
-                        //promotion scroller
-                        GridScroll(),
-    
-                        TitleDesc(
-                            title: "Hungry?",
-                            description: "Recommedations Just For You!"),
-    
-                        GridScroll(),
-    
-                        TitleDesc(
-                            title: "Events?", description: "Join in the Fun!"),
-    
-                        GridScroll(),
-                      ],
+                        
+                          SizedBox(height: heightBetween),
+                          TitleDesc(
+                              title: "Promotion", description: "Limited Time only"),
+                        
+                          //promotion scroller
+                          GridScroll(),
+
+                          SizedBox(height: heightBetween),
+                        
+                          TitleDesc(
+                              title: "Hungry?",
+                              description: "Recommedations Just For You!"),
+                        
+                          GridScroll(),
+                        
+                        SizedBox(height: heightBetween),
+                          TitleDesc(
+                              title: "Events?", description: "Join in the Fun!"),
+                        
+                          GridScroll(),
+                        ],
+                      ),
                     ),
                   ),
                 ]),

@@ -1,13 +1,11 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
+import 'package:mall_assistant_app/consts/colors.dart';
 import 'package:mall_assistant_app/service/shop_service.dart';
+import 'package:mall_assistant_app/utils/horizontalGridScroll.dart';
 import 'package:mall_assistant_app/utils/navs_bars/top_bar.dart';
-import '../api/mysql.dart';
 import '../entity/Shop.dart';
 import '../utils/list_row.dart';
 import '../utils/navs_bars/bottonNav.dart';
-import 'package:http/http.dart' as http;
 
 class Directory extends StatefulWidget {
   const Directory({Key? key}) : super(key: key);
@@ -17,100 +15,84 @@ class Directory extends StatefulWidget {
 }
 
 class _DirectoryState extends State<Directory> {
-  // Add a method to fetch shops from the API
+  late List<Shop> _shops = [];
 
-  late List<Shop> _shops = []; // Initialize it to an empty list
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void initState() {
     super.initState();
-    debugPrint("testing");
-
     _loadShops();
-    // Call the fetchShops method when the widget is inserted into the tree
   }
 
   void _loadShops() async {
     try {
-      print("Load shop");
-      // Assuming ShopService.getShops(1) returns a Future<List<Shop>>
       List<Shop> shops = await ShopService.getShops('1');
-      print("Load finish");
-      // Set the state with the retrieved shops
       setState(() {
         _shops = shops;
       });
     } catch (error) {
-      // Handle any errors that occurred during the asynchronous operation
       print('Error loading shops: $error');
-      // You might want to show an error message to the user or handle it differently
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       bottomNavigationBar: BottomNav(),
       body: CustomScrollView(
+        controller: _scrollController, // Attach the ScrollController
         slivers: [
           TopBar(),
-    
-          // content starts here
           SliverList(
             delegate: SliverChildListDelegate([
               SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Container(
-                      width: screenWidth,
-                      child: Text(
-                        "Total Shops",
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w600,
+                controller: _scrollController, // Attach the ScrollController
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      CategoryGridScroll(),
+                      Container(
+                        width: screenWidth,
+                        child: Text(
+                          "Total Shops" + "(" + _shops.length.toString() + ")",
+                          style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
-                    ),
-    
-    
-                    Column(
-                       children: [
-                    for(int i = 0;i < _shops.length;i++)
-                      ListRow(title: _shops[i].shopName!, description: _shops[i].shopLocation!,id: _shops[i].id!)
-                    
-                    ]
-                    ),
-    
-                    //  
-    
-                    // Column(
-                    //   children: [
-                    //     if (_shops.isNotEmpty)
-                    //       ListRow(
-                    //         title: _shops[0].shopName!,
-                    //         description: _shops[0].shopLocation!,
-                    //       )
-                    //     else
-                    //       Text(
-                    //           'No shops available'), // Provide a message when the list is empty
-                    //   ],
-                    // ),
-    
-                    // Column(
-                    //   children: [
-                    //     ListRow(title: "title", description: "location"),
-                    //     ListRow(title: "title", description: "location"),
-                    //     ListRow(title: "title", description: "location"),
-                    //   ],
-                    // ),
-                  ],
+                      Column(
+                        children: [
+                          for (int i = 0; i < _shops.length; i++)
+                            ListRow(
+                              title: _shops[i].shopName!,
+                              description: _shops[i].shopLocation!,
+                              id: _shops[i].id!,
+                            ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ]),
-          )
+          ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: bg2,
+        onPressed: () {
+          _scrollController.animateTo(
+            0.0,
+            duration: Duration(milliseconds: 500),
+            curve: Curves.easeInOut,
+          );
+        },
+        child: Icon(Icons.arrow_upward),
       ),
     );
   }

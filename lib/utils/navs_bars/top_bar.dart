@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mall_assistant_app/consts/consts.dart';
 
 class TopBar extends StatelessWidget {
   const TopBar({super.key});
@@ -7,6 +8,7 @@ class TopBar extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController searchController = TextEditingController();
     return SliverAppBar(
+      backgroundColor: bg_primary,
               floating: true,
               pinned: true,
               snap: false,
@@ -32,23 +34,27 @@ class TopBar extends StatelessWidget {
                 ),
               ],
               bottom: AppBar(
+                backgroundColor: bg_primary,
   automaticallyImplyLeading: false,
   title: Container(
     width: double.infinity,
     height: 40,
-    color: Colors.white,
+    color: bg_secondary,
     child: Center(
       child: TextField(
         controller: searchController,
         decoration: InputDecoration(
+          
           hintText: 'Search for shops or restaurants',
+          hintStyle: TextStyle(color: txt3),
           prefixIcon: GestureDetector(
             onTap: () {
               
             },
-            child: const Icon(Icons.search), // Remove 'const' from GestureDetector
+            child: const Icon(Icons.search,color: txt3,), // Remove 'const' from GestureDetector
           ),
         ),
+        
       ),
     ),
   ),

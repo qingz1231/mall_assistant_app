@@ -14,7 +14,7 @@ class ListRow extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(5.0),
       child: GestureDetector(
         onTap: () {
           Navigator.push(

@@ -50,121 +50,125 @@ class _ShopDetailState extends State<ShopDetail> {
       child: Scaffold(
           body: FutureBuilder(
               future: ShopService.getShopById(itemId),
-              builder: (context, snapshot) => snapshot.hasData
-                  ? SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          Stack(
-                            children: [
-                              Container(
-                                  height: screenHeight / 3 + (80 / 2),
-                                  width: screenWidth),
-                              Container(
-                                height: screenHeight / 3,
-                                width: screenWidth,
+              builder: (context, snapshot) {
+                List<String> tags = snapshot.data!.shop!.tags!
+                    .replaceAll('{', '')
+                    .replaceAll('}', '')
+                    .replaceAll('"', '')
+                    .split(', ');
+                if (snapshot.hasData) {
+                  return SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Stack(
+                          children: [
+                            Container(
+                                height: screenHeight / 3 + (80 / 2),
+                                width: screenWidth),
+                            Container(
+                              height: screenHeight / 3,
+                              width: screenWidth,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: NetworkImage(
+                                          snapshot.data!.shop!.imageUrl!),
+                                      fit: BoxFit.cover)),
+                            ),
+                            Positioned(
+                              top: screenHeight / 3 - 40,
+                              child: Container(
+                                width: 80,
+                                height: 80,
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
                                         image: NetworkImage(
-                                            snapshot.data!.shop!.imageUrl!),
-                                        fit: BoxFit.cover)),
+                                            'https://mall-assistant-system.s3.amazonaws.com/1x1.jpg'))),
                               ),
-                              Positioned(
-                                top: screenHeight / 3 - 40,
-                                child: Container(
-                                  width: 80,
-                                  height: 80,
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          image: NetworkImage(
-                                              'https://mall-assistant-system.s3.amazonaws.com/1x1.jpg'))),
+                            )
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            children: [
+                              TitleDesc(
+                                  title: snapshot.data!.shop!.shopName!,
+                                  description:
+                                      snapshot.data!.shop!.shopLocation!),
+                              Row(
+                                children: [
+                                  Container(
+                                    width: screenWidth * 0.4,
+                                    child: CustomRegularButton(
+                                        map, bg2, () => null),
+                                  ),
+                                  Container(
+                                    width: screenWidth * 0.15,
+                                    child: CustomIconBtn(
+                                        height: functionHeight,
+                                        icon: Icons.favorite,
+                                        clicked: snapshot.data!.isSaved!,
+                                        onTapFunction: (bool saved) async {
+                                          Customer customer =
+                                              await RememberUserPrefs
+                                                  .loadCurrentUser();
+                                          saved
+                                              ? BookmarkService.remove(
+                                                  customer.customerId!,
+                                                  itemId,
+                                                  '1')
+                                              : BookmarkService.save(
+                                                  customer.customerId!,
+                                                  itemId,
+                                                  '1');
+                                        }),
+                                  ),
+                                ],
+                              ),
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      detail,
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                          fontSize: 24.0,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    Container(
+                                        child: ReadMore(
+                                            snapshot.data!.shop!.shopDesc!, 5,
+                                            style: TextStyle(
+                                                fontSize: 16.0,
+                                                fontWeight: FontWeight.w400)))
+                                  ],
                                 ),
+                              ),
+                              Container(
+                                alignment: AlignmentDirectional.centerStart,
+                                child: Wrap(
+                                    spacing:
+                                        16.0, // Horizontal spacing between buttons
+                                    runSpacing:
+                                        16.0, // Vertical spacing between rows of buttons
+                                    children: [
+                                      for (int i = 0; i < tags.length; i++)
+                                        CustomRegularButton(
+                                            tags[i], bg_secondary, () => null)
+                                    ]),
                               )
                             ],
                           ),
-                          TitleDesc(
-                              title: snapshot.data!.shop!.shopName!,
-                              description: snapshot.data!.shop!.shopLocation!),
-                          Container(
-                            child: Row(
-                              children: [
-                                Container(
-                                  width: screenWidth * 0.4,
-                                  child:
-                                      CustomRegularButton(map, bg2, () => null),
-                                ),
-                                Container(
-                                  width: screenWidth * 0.15,
-                                  child: CustomIconBtn(
-                                      height: functionHeight,
-                                      icon: Icons.favorite,
-                                      clicked: snapshot.data!.isSaved!,
-                                      onTapFunction: (bool saved) async {
-                                
-                                        Customer customer =
-                                            await RememberUserPrefs
-                                                .loadCurrentUser();
-                                        saved
-                                            ? BookmarkService.remove(
-                                                customer.customerId!,
-                                                itemId,
-                                                '1')
-                                            : BookmarkService.save(
-                                                customer.customerId!,
-                                                itemId,
-                                                '1');
-                                      }),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  detail,
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                      fontSize: 24.0,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Container(
-                                    child: ReadMore(
-                                        snapshot.data!.shop!.shopDesc!, 5,
-                                        style: TextStyle(
-                                            fontSize: 16.0,
-                                            fontWeight: FontWeight.w400)))
-                              ],
-                            ),
-                          ),
-                          Container(
-                            child: Wrap(
-                                spacing:
-                                    16.0, // Horizontal spacing between buttons
-                                runSpacing:
-                                    16.0, // Vertical spacing between rows of buttons
-                                children: [
-                                  CustomRegularButton(
-                                      "test", bg_secondary, () => null),
-                                  CustomRegularButton(
-                                      "test", bg_secondary, () => null),
-                                  CustomRegularButton(
-                                      "test", bg_secondary, () => null),
-                                  CustomRegularButton(
-                                      "test", bg_secondary, () => null),
-                                  CustomRegularButton(
-                                      "test", bg_secondary, () => null),
-                                  CustomRegularButton(
-                                      "test", bg_secondary, () => null),
-                                  CustomRegularButton(
-                                      "test", bg_secondary, () => null),
-                                ]),
-                          )
-                        ],
-                      ),
-                    )
-                  : SplashScreen())),
+                        ),
+                      ],
+                    ),
+                  );
+                } else {
+                  return SplashScreen();
+                }
+              })),
     );
   }
 

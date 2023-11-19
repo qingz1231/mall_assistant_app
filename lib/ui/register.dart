@@ -6,14 +6,20 @@ import '../utils/horizontalGridScroll.dart';
 import '../utils/label_input.dart';
 import '../utils/title_desc.dart';
 
-class Register extends StatelessWidget {
+class Register extends StatefulWidget {
   const Register({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
+  _RegisterState createState() => _RegisterState();
+
+}
+class _RegisterState extends State<Register> {
+   TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
     TextEditingController nameController = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+   
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -39,8 +45,11 @@ class Register extends StatelessWidget {
                 width: screenWidth,
                 child: ElevatedButton(
     
-                  onPressed: () {
-                    var _name = nameController.text.trim();
+                  onPressed: emailController.text.trim().isEmpty ||
+                            passwordController.text.trim().isEmpty||
+                            nameController.text.trim().isEmpty?
+                  null:() {
+                     var _name = nameController.text.trim();
                     var _username = emailController.text.trim();
                     var _password = passwordController.text.trim();
              
@@ -48,8 +57,11 @@ class Register extends StatelessWidget {
                     CustomerService.register(_name, _username, _password);
     
                     Navigator.pop(context);
+                  }
+                    
+                   
     
-                  },
+                  ,
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
                     backgroundColor: bg_primary,
